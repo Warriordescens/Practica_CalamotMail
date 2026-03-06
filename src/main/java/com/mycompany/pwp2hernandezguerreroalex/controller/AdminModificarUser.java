@@ -68,6 +68,7 @@ public class AdminModificarUser extends HttpServlet {
         HttpSession session = request.getSession();
         Locale userLocale = (Locale) session.getAttribute("currentLocale");
         ResourceBundle traduccion = ResourceBundle.getBundle("com.mycompany.pwp2hernandezguerreroalex.i18n.messages", userLocale);
+        User u = (User) session.getAttribute("usuari");
         
         String pass = request.getParameter("pass");
         String username = request.getParameter("username");
@@ -87,6 +88,9 @@ public class AdminModificarUser extends HttpServlet {
 
             if (!userActual.getNom().equalsIgnoreCase(name) || userActual.getAdmin() != type) {
                 CalamotMailDAO.getInstance().changeModif(type, username, name);
+                if (u.getUsername().equalsIgnoreCase(username)) {
+                    session.setAttribute("usuari", CalamotMailDAO.getInstance().getUser(username));
+                }
                 answer.setMessage(traduccion.getString("admin.modif.ok"));
                 answer.setStatus("OK");
                 changed = true;
