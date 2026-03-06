@@ -1,0 +1,44 @@
+
+<style>
+    /* BOTONES DE IDIOMA: Sutiles y elegantes */
+    .lang-switch {
+        position: relative;
+        bottom: 3px;
+        margin-bottom: 0 !important;
+    }
+    .lang-switch .btn {
+        border: 1px solid #dee2e6;
+        color: #6c757d;
+        font-size: 0.75rem;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    .lang-switch .btn.active {
+        background-color: #6610f2; /* Color Púrpura distintivo */
+        color: white;
+        border-color: #6610f2;
+    }
+    .lang-switch .btn:hover {
+        transform: translateY(-2px);
+    }
+</style>
+<!-- 1. HEADER: Idiomas -->
+<div class="d-flex justify-content-end mb-0 pt-2 lang-switch gap-1">
+    <!-- Botón Catalán -->
+    <a href="?lang=ca" title="Canviar a Català" 
+       class="btn btn-sm rounded-pill px-3 ${sessionScope.currentLocale.language == 'ca' ? 'active' : ''}">
+        <i class="bi bi-translate me-1"></i> CA
+    </a>
+
+    <!-- Botón Español -->
+    <a href="?lang=es" title="Cambiar a Español" 
+       class="btn btn-sm rounded-pill px-3 ${sessionScope.currentLocale.language == 'es' ? 'active' : ''}">
+        <i class="bi bi-translate me-1"></i> ES
+    </a>
+
+    <!-- Botón Inglés -->
+    <a href="?lang=en" title="Change to English" 
+       class="btn btn-sm rounded-pill px-3 ${sessionScope.currentLocale.language == 'en' ? 'active' : ''}">
+        <i class="bi bi-translate me-1"></i> EN
+    </a>
+</div>
